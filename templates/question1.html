@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Question 1{% endblock %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+
+{% block content %}
+<p>
+    {{survey.questions[0].question}}
+</p>
+
+<form action="/answer">
+    Select your answer:
+    <label for="Yes">Yes<input type="radio" name="Yes" onclick="this.form.submit()"></label>
+
+    <label for="No">No</label><input type="radio" name="No" onclick="this.form.submit()"></label>
+</form>
+
+
+{% endblock %}
